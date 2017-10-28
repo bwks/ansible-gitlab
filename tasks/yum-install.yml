@@ -1,0 +1,6 @@
+---
+- name: YUM - Install Gitlab
+  yum:
+    name: "gitlab-ce"
+    state: installed
+

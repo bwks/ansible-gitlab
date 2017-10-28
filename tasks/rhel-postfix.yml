@@ -1,0 +1,7 @@
+---
+- name: YUM - Install Postfix
+  yum:
+    name: postfix
+    state: installed
+  when: enable_postfix
+  notify: enable_postfix

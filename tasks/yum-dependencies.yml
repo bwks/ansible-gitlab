@@ -1,0 +1,10 @@
+---
+- name: YUM - Install dependencies
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - "curl"
+    - "policycoreutils-python"
+    - "openssh-server" 
+  notify: enable_ssh_server

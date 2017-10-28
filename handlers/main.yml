@@ -1,2 +1,24 @@
 ---
 # handlers file for ansible-gitlab
+- name: enable_ssh_server
+  systemd:
+    name: sshd
+    state: started
+    enabled: True
+
+  name: restart_ssh_server
+  systemd:
+    name: sshd
+    state: restarted
+
+- name: enable_postfix
+  systemd:
+    name: postfix
+    state: started
+    enabled: True
+
+  name: restart_postfix
+  systemd:
+    name: postfix
+    state: restarted
+

@@ -1,0 +1,13 @@
+---
+- name: "RHEL - Download Gitlab repo script"
+  get_url: 
+    url:  "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh"
+    dest: "/tmp/script.rpm.sh"
+    mode: 0644
+    owner: root
+    group: root
+  #when: jenkins_repo.stat.exists == False
+
+- name: "RHEL - Run Gitlab repo script"
+  script: "/tmp/script.rpm.sh" 
+    
