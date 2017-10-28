@@ -1,7 +1,7 @@
 Role Name
 =========
 
-ansible-jenkins
+ansible-gitlab
 
 Requirements
 ------------
@@ -12,7 +12,9 @@ Role Variables
 --------------
 
 ```yaml
-TBA: 
+enable_postfix: Install postfix for email notifications
+
+gitlab_external_url: External URL to use for gitlab web console
 ```
 
 Dependencies
