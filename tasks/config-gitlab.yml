@@ -1,0 +1,9 @@
+---
+- name: Copy config template to server
+  template: 
+    src: "templates/gitlab.rb.j2"
+    dest: "/etc/gitlab/gitlab.rb"
+    mode: 0600
+    owner: root
+    group: root
+  notify: reconfigure_gitlab

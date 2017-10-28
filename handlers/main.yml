@@ -6,7 +6,7 @@
     state: started
     enabled: True
 
-  name: restart_ssh_server
+- name: restart_ssh_server
   systemd:
     name: sshd
     state: restarted
@@ -17,8 +17,11 @@
     state: started
     enabled: True
 
-  name: restart_postfix
+- name: restart_postfix
   systemd:
     name: postfix
     state: restarted
+
+- name: reconfigure_gitlab
+  command: "gitlab-ctl reconfigure"
 

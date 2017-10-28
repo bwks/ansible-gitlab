@@ -2,3 +2,5 @@
 # defaults file for ansible-gitlab
 
 enable_postfix: False
+
+gitlab_external_url: 'http://gitlab/'

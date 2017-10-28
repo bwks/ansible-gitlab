@@ -1,13 +1,18 @@
 ---
+- name: "RHEL - Check if Gitlab repo is already added"
+  stat:
+    path: "/etc/yum.repos.d/gitlab_gitlab-ce.repo"
+  register: gitlab_repo
+
 - name: "RHEL - Download Gitlab repo script"
   get_url: 
     url:  "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh"
     dest: "/tmp/script.rpm.sh"
-    mode: 0644
+    mode: 0744
     owner: root
     group: root
-  #when: jenkins_repo.stat.exists == False
+  when: gitlab_repo.stat.exists == False
 
 - name: "RHEL - Run Gitlab repo script"
-  script: "/tmp/script.rpm.sh" 
-    
+  command: "bash /tmp/script.rpm.sh" 
+  when: gitlab_repo.stat.exists == False 
