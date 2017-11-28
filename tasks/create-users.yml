@@ -1,0 +1,16 @@
+---
+- name: Create Gitlab User
+  gitlab_user:
+    server_url: "http://{{ ansible_host }}"
+    validate_certs: False
+    login_user: "{{ gitlab_admin }}"
+    login_password: "{{ gitlab_admin_pass }}"
+    name: "{{ item.name }}"
+    username: "{{ item.username }}"
+    password: "{{ item.password }}"
+    email: "{{ item.email }}"
+    state: present
+  with_items:
+    - "{{ gitlab_users }}"
+  delegate_to: localhost
+  tags: gitlab-users
